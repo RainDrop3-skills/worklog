@@ -33,6 +33,19 @@ Claude Code 에서:
 
 훅 스크립트를 `sh` 로 돌린다. Windows 에서는 Git for Windows 가 있어야 한다.
 
+### 설치 범위
+
+`claude plugin marketplace add` 와 `claude plugin install` 은 `--scope` 를 받는다 (기본 `user`).
+`project` 와 `local` 은 명령을 실행한 폴더의 프로젝트에 적용된다.
+
+| `--scope` | 적용 범위 |
+|---|---|
+| `user` | 내 모든 프로젝트 |
+| `project` | 이 프로젝트. `.claude/settings.json` 을 커밋하면 팀과 공유 |
+| `local` | 이 프로젝트, 나만 |
+
+한 프로젝트에서만 끄려면: `claude plugin disable worklog@worklog --scope local`
+
 ## 쓰는 법
 
 1. 레포에서 `/worklog:init` — 기준 브랜치, 도메인, 문서 언어(영어 또는 한국어, 기본 영어)를 정하고 파일을 깐다.

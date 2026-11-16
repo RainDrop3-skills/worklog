@@ -33,6 +33,19 @@ In Claude Code:
 
 The hook scripts run with `sh`. On Windows, Git for Windows is required.
 
+### Install scope
+
+`claude plugin marketplace add` and `claude plugin install` take `--scope` (default `user`).
+`project` and `local` apply to the folder you run the command in.
+
+| `--scope` | Applies to |
+|---|---|
+| `user` | All your projects |
+| `project` | This project. Commit `.claude/settings.json` to share it with the team |
+| `local` | This project, only you |
+
+To turn it off in one project only: `claude plugin disable worklog@worklog --scope local`
+
 ## Usage
 
 1. In a repo, run `/worklog:init`. Agree on the base branch, the domains and the document language
