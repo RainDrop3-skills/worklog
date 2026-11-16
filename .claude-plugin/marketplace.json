@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "worklog",
+  "description": "Marketplace for distributing the worklog plugin",
+  "owner": {
+    "name": "RainDrop3"
+  },
+  "plugins": [
+    {
+      "name": "worklog",
+      "description": "Requires a work log for every push and has Claude read recent logs before starting work",
+      "source": "./"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "worklog",
+  "version": "0.1.0",
+  "description": "Requires a work log for every push and has Claude read recent logs before starting work",
+  "author": {
+    "name": "RainDrop3"
+  },
+  "license": "MIT"
+}

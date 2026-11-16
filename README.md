@@ -1,0 +1,56 @@
+<div align="center">
+
+[Kor](README.ko.md) | [Eng](README.md)
+
+</div>
+
+# worklog
+
+A Claude Code plugin that requires a work log for every push and has Claude read recent logs before starting work.
+
+## What's inside
+
+| Component | Location | What it does |
+|---|---|---|
+| `/worklog:init` | `skills/init/` | Sets up `worklog/README.md` and `.githooks/pre-push` in a repo |
+| `/worklog:write` | `skills/write/` | Writes up this push's work under `worklog/<domain>/` and commits it |
+| SessionStart hook | `scripts/session-start.sh` | Turns on `core.hooksPath` and adds the latest worklog paths per domain to the conversation |
+| PostToolUseFailure hook | `scripts/push-nudge.sh` | When a push is blocked, tells Claude to run `/worklog:write` and push again |
+| git `pre-push` | each repo's `.githooks/` | Blocks a push that has code changes but no worklog document |
+
+The git hook lives in each repo, not in the plugin, so it also applies to teammates who don't have the plugin.
+
+The hooks only act in repos that have a `worklog/` folder. Everywhere else they do nothing.
+
+## Install
+
+In Claude Code:
+
+```
+/plugin marketplace add RainDrop3-skills/worklog
+/plugin install worklog@worklog
+```
+
+The hook scripts run with `sh`. On Windows, Git for Windows is required.
+
+## Usage
+
+1. In a repo, run `/worklog:init`. Agree on the base branch, the domains and the document language
+   (English or Korean, English by default), then it sets up the files.
+2. Work and push as usual. If a push is blocked, Claude writes the log and pushes again.
+
+The document language is set per repo, so everyone on a team writes logs in the same language.
+It applies to the worklog documents, `worklog/README.md` and the message shown when a push is blocked.
+
+## Settings
+
+| Environment variable | Default | Meaning |
+|---|---|---|
+| `WORKLOG_READ_N` | `2` | Number of latest documents per domain shown at session start |
+
+Set it under `env` in `.claude/settings.json`.
+
+## Note
+
+The skill instructions and the messages the hooks send to Claude are written in Korean.
+They are read by Claude, not by you, and do not change the document language.
