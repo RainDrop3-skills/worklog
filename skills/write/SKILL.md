@@ -13,13 +13,12 @@ push 한 번에 기록 한 번. 같은 날 같은 도메인 문서가 이미 있
 
 ## 1. 범위 확인
 
-```
-git log --oneline @{push}..HEAD
-git diff --name-only @{push}..HEAD
-```
+이번 push 분량은 원격 어디에도 아직 없는 커밋이다. 새 브랜치든 이미 올린 브랜치든 같다.
 
-브랜치를 처음 push 하는 경우엔 `@{push}` 가 없다. 그때는 `.githooks/pre-push` 의
-`base_branch` 값(예: `origin/develop`)으로 `$(git merge-base <base_branch> HEAD)..HEAD` 를 범위로 쓴다.
+```
+git log --oneline HEAD --not --remotes
+git log --format= --name-only HEAD --not --remotes | sort -u
+```
 
 ## 2. 도메인 하나 고른다
 

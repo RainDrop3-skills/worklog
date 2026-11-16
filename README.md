@@ -54,7 +54,7 @@ To turn it off in one project only: `claude plugin disable worklog@worklog --sco
 
 ## Usage
 
-1. In a repo, run `/worklog:init`. Agree on the base branch, the domains and the document language
+1. In a repo, run `/worklog:init`. Pick the domains and the document language
    (English or Korean, English by default), then it sets up the files.
 2. Work and push as usual. If a push is blocked, Claude writes the log and pushes again.
 

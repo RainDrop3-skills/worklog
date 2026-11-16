@@ -54,7 +54,7 @@ claude plugin install worklog@worklog --scope local
 
 ## 쓰는 법
 
-1. 레포에서 `/worklog:init` — 기준 브랜치, 도메인, 문서 언어(영어 또는 한국어, 기본 영어)를 정하고 파일을 깐다.
+1. 레포에서 `/worklog:init` — 도메인과 문서 언어(영어 또는 한국어, 기본 영어)를 정하고 파일을 깐다.
 2. 평소처럼 작업하고 push 한다. 막히면 Claude 가 문서를 쓰고 다시 push 한다.
 
 문서 언어는 레포마다 정한다. 팀원 모두가 같은 언어로 기록하게 하기 위해서다.
