@@ -24,25 +24,31 @@ The hooks only act in repos that have a `worklog/` folder. Everywhere else they 
 
 ## Install
 
-In Claude Code:
+In a terminal (bash):
 
-```
-/plugin marketplace add RainDrop3-skills/worklog
-/plugin install worklog@worklog
+```bash
+claude plugin marketplace add RainDrop3-skills/worklog
+claude plugin install worklog@worklog
 ```
 
 The hook scripts run with `sh`. On Windows, Git for Windows is required.
 
 ### Install scope
 
-`claude plugin marketplace add` and `claude plugin install` take `--scope` (default `user`).
-`project` and `local` apply to the folder you run the command in.
+Both commands take `--scope` (default `user`).
+`project` and `local` apply to the folder you run the command in, so `cd` there first.
 
 | `--scope` | Applies to |
 |---|---|
 | `user` | All your projects |
 | `project` | This project. Commit `.claude/settings.json` to share it with the team |
 | `local` | This project, only you |
+
+```bash
+cd <project>
+claude plugin marketplace add RainDrop3-skills/worklog --scope local
+claude plugin install worklog@worklog --scope local
+```
 
 To turn it off in one project only: `claude plugin disable worklog@worklog --scope local`
 
@@ -62,8 +68,3 @@ It applies to the worklog documents, `worklog/README.md` and the message shown w
 | `WORKLOG_READ_N` | `2` | Number of latest documents per domain shown at session start |
 
 Set it under `env` in `.claude/settings.json`.
-
-## Note
-
-The skill instructions and the messages the hooks send to Claude are written in Korean.
-They are read by Claude, not by you, and do not change the document language.

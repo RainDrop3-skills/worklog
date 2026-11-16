@@ -24,25 +24,31 @@ git 훅은 플러그인이 아니라 각 레포에 들어간다. 플러그인이
 
 ## 설치
 
-Claude Code 에서:
+터미널(bash)에서:
 
-```
-/plugin marketplace add RainDrop3-skills/worklog
-/plugin install worklog@worklog
+```bash
+claude plugin marketplace add RainDrop3-skills/worklog
+claude plugin install worklog@worklog
 ```
 
 훅 스크립트를 `sh` 로 돌린다. Windows 에서는 Git for Windows 가 있어야 한다.
 
 ### 설치 범위
 
-`claude plugin marketplace add` 와 `claude plugin install` 은 `--scope` 를 받는다 (기본 `user`).
-`project` 와 `local` 은 명령을 실행한 폴더의 프로젝트에 적용된다.
+두 명령은 `--scope` 를 받는다 (기본 `user`).
+`project` 와 `local` 은 명령을 실행한 폴더의 프로젝트에 적용되므로 먼저 그 폴더로 `cd` 한다.
 
 | `--scope` | 적용 범위 |
 |---|---|
 | `user` | 내 모든 프로젝트 |
 | `project` | 이 프로젝트. `.claude/settings.json` 을 커밋하면 팀과 공유 |
 | `local` | 이 프로젝트, 나만 |
+
+```bash
+cd <프로젝트>
+claude plugin marketplace add RainDrop3-skills/worklog --scope local
+claude plugin install worklog@worklog --scope local
+```
 
 한 프로젝트에서만 끄려면: `claude plugin disable worklog@worklog --scope local`
 
